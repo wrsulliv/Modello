@@ -32,18 +32,20 @@ const getImageURL = async () => {
     }
   } catch (err) {
     alert(JSON.stringify(err));
+    throw new Error(`An error occurred: ${JSON.stringify(err)}.`);
   }
-  throw new Error('Could not retrieve an image URL');
+  throw new Error('No valid image URLs in the selected page.');
 };
 
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      cards: {}
+    }
   }
 
   async componentDidMount() {
-    console.log('MOUNTED');
     const url = await getImageURL();
     this.setState({
       url
@@ -51,8 +53,10 @@ export default class App extends Component {
 
   }
   render() {
-    const children = Object.keys(this.state).map((name) => {
-      const anchor = this.state[name];
+    const cards = this.state.cards;
+    const url = this.state.url;
+    const children = Object.keys(cards).map((name) => {
+      const anchor = cards[name];
       const { position, eulerAngles, positionAbsolute } = anchor;
       return (
         <ARKit.Box
@@ -60,7 +64,7 @@ export default class App extends Component {
             shape={{ width: 0.0635, height: 0.001, length: 0.0889, chamfer: 0 }}
             eulerAngles={ eulerAngles }
             material={{
-              diffuse: { path: this.state.url, intensity: 1 }
+              diffuse: { path: url, intensity: 1 }
             }}
           />
       );
@@ -80,7 +84,7 @@ export default class App extends Component {
             const { position, eulerAngles, positionAbsolute, type } = anchor;
             if (type === 'image') {
               const { image: { name } } = anchor;
-              this.setState({ [name]: { position, eulerAngles, positionAbsolute }})
+              this.setState({ cards: { [name]: { position, eulerAngles, positionAbsolute }}})
             }
           }}
         >
