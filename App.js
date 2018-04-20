@@ -27,7 +27,6 @@ const getImageURL = async () => {
     for (let i = 0; i < records.length; i++) {
       const record = records[i];
       if (record.primaryimageurl) {
-        alert(record.primaryimageurl);
         return record.primaryimageurl;
       }
     }
