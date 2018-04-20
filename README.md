@@ -1,5 +1,5 @@
 #  # Modello
-Experience museum galleries with a standard deck of playing cards.
+Experience museum galleries with a standard deck of cards.
 
 Modello uses the "Harvard Art Museums" API to create several augmented reality experiences.  Each experience provides an opportunity to explore and learn about museum artwork.  
 
