@@ -3,7 +3,7 @@ Experience museum galleries with a standard deck of cards.
 
 Modello uses the "Harvard Art Museums" API to create several augmented reality experiences.  Each experience provides an opportunity to explore and learn about museum artwork.  
 
-Currently, the artwork from the API is projected onto standard playing cards (Bicycle Rider).  Examples of future work includes projection onto walls and other easily accessible items.
+Currently, the artwork from the API is projected onto standard playing cards (Bicycle Rider).  Examples of future work include projection onto walls and other accessible items.
 
 
 ## Usage
